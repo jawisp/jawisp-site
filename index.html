@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Site</title>
+  <meta name="description" content="Welcome to my starter homepage." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.ico" />
+
+  <!-- Styles -->
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --bg-card: #020617;
+      --fg: #e5e7eb;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.2);
+      --border: #1f2937;
+      --radius: 0.75rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--fg);
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 960px;
+      border-radius: calc(var(--radius) * 1.5);
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #020617 0%, #020617 60%, #0b1120 100%);
+      box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .logo-mark {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background:
+        conic-gradient(from 200deg, #38bdf8, #a855f7, #22c55e, #eab308, #38bdf8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0, #0b1120 0, #020617 55%);
+    }
+
+    .logo-mark span {
+      position: relative;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    nav a {
+      color: #9ca3af;
+      text-decoration: none;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.15s ease-out;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.35);
+      background-color: rgba(15, 23, 42, 0.7);
+    }
+
+    nav a.primary {
+      color: #e5e7eb;
+      border-color: rgba(56, 189, 248, 0.7);
+      background: radial-gradient(circle at top, #22d3ee 0, #38bdf8 45%, #0369a1 100%);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 10px 25px rgba(8, 47, 73, 0.8);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 1.75rem;
+      padding: 1.75rem 1.75rem 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.7rem 0.15rem 0.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background-color: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 0.7rem;
+    }
+
+    .pill-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0 0, #22c55e 60%);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 2.4vw + 1rem, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    h1 span {
+      background: linear-gradient(120deg, #22d3ee, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      max-width: 38rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background-color: #020617;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease-out;
+      min-width: 0;
+    }
+
+    .btn-primary {
+      border-color: rgba(56, 189, 248, 0.7);
+      background: radial-gradient(circle at top, #22d3ee 0, #38bdf8 45%, #0369a1 100%);
+      box-shadow: 0 10px 25px rgba(8, 47, 73, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 35px rgba(8, 47, 73, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.4);
+      background-color: rgba(15, 23, 42, 0.9);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .meta-badge {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      color: #9ca3af;
+      background-color: rgba(15, 23, 42, 0.85);
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at top left, #020617 0, #020617 50%, #020617 100%);
+      padding: 1.25rem 1.2rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.14) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(168, 85, 247, 0.16) 0, transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .card-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      font-size: 1.6rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .card-metric span {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin-top: 0.2rem;
+      font-size: 0.76rem;
+      color: #9ca3af;
+    }
+
+    .chip {
+      padding: 0.35rem 0.5rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background-color: rgba(15, 23, 42, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+    }
+
+    .chip strong {
+      color: #e5e7eb;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    .chip-pill {
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      background-color: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    footer {
+      padding: 0.7rem 1.5rem 1rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #6b7280;
+      background: radial-gradient(circle at bottom, #020617 0, #020617 55%);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">
+          <span>IX</span>
+        </div>
+        <span>Index Starter</span>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="primary">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Online • Ready to deploy</span>
+        </div>
+
+        <h1>
+          A minimal, fast <span>index.html</span> starter.
+        </h1>
+
+        <p class="subtitle">
+          Drop this file into any web root and start building your next landing page, documentation site, or personal
+          portfolio with a clean, modern base.
+        </p>
+
+        <div class="actions">
+          <a href="#get-started" class="btn btn-primary">
+            Get started
+          </a>
+          <a href="#source" class="btn btn-ghost">
+            View source
+          </a>
+        </div>
+
+        <div class="meta">
+          <span class="meta-badge">No build step • Pure HTML + CSS</span>
+          <span>•</span>
+          <span>Responsive layout</span>
+          <span>•</span>
+          <span>Dark-mode friendly</span>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Quick project overview">
+        <div class="card-inner">
+          <div class="card-title">Quick overview</div>
+
+          <div class="card-metric">
+            <strong>index.html</strong>
+            <span>single-file starter</span>
+          </div>
+
+          <div class="card-grid">
+            <div class="chip">
+              <span>HTML5 ready</span>
+              <span class="chip-pill">Semantic tags</span>
+            </div>
+            <div class="chip">
+              <span>Responsive</span>
+              <span class="chip-pill">Mobile first</span>
+            </div>
+            <div class="chip">
+              <span>Customizable</span>
+              <span class="chip-pill">CSS variables</span>
+            </div>
+            <div class="chip">
+              <span>Deployable</span>
+              <span class="chip-pill">Any host</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Your Name. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#imprint">Imprint</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Keep footer year current
+    (function () {
+      var el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
+
